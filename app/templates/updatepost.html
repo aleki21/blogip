@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<div class="container">
+    <form class="form-group" method="POST" enctype="multipart/form-data">
+        {{form.hidden_tag()}}
+        {{form.content.label}}
+        {{form.content(class = "form-control", style="margin-bottom: 15px;")}}
+        <!--<input type="file" name="post_photo" class="form-control" style="margin-bottom:15px">-->
+        {{form.submit(class = "btn btn-outline-info")}}
+    </form>
+
+    
+
+</div>
+
+{% endblock%}

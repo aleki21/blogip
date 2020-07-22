@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf%}
+
+{% block content %}
+<div class="container">
+    <h1> MY BLOG </h1>
+    <h4>Quote : {{quote}} by {{author}}</h4>
+
+    <h3>Posts</h3>
+    {% for post in posts %}
+    <li>{{post.title }}</li>
+    <!--<img src="{{url_for('static',filename=post.image_url)}}" alt="">-->
+    <button><a href="{{url_for('main.post', post_id = post.id)}}"> View Post </a></button>
+    {% endfor %}
+
+    {{wtf.quick_form(form)}}
+</div>
+{% endblock %}
