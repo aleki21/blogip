@@ -1,0 +1,25 @@
+h1{
+    font-family: 'Unkempt', cursive;
+    font-size: 60px;
+    font-weight: bold;
+    color: #84a59d; 
+}
+
+h2{
+    font-family: 'Unkempt', cursive;
+    font-size: 30px;
+}
+
+p{
+    font-family: 'Cabin', sans-serif;
+    color:black; 
+    text-align: center;
+    font-size: 18px;
+}
+
+img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border: #f6bd60 solid 3px;
+}

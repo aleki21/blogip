@@ -1,0 +1,91 @@
+h1{
+    font-family: 'Unkempt', cursive;
+    font-size: 120px;  
+    text-align: center;
+    font-weight: bold;
+    color: #84A59D;
+}
+
+img{
+    width: 1170px;
+    height: 250px;
+    object-fit: cover;
+    margin: 0 auto;
+
+}
+
+.about h4{
+    font-family: 'Unkempt', cursive;
+    color: #84A59D;
+    font-size: 40px;
+}
+
+.about{
+    font-family: 'Cabin', sans-serif;
+    color:black; 
+    
+    text-align: center;
+    font-size: 18px;
+}
+
+.post h4{
+    font-family: 'Unkempt', cursive;
+    color: #84A59D;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    padding: 50px;
+
+
+}
+.post{
+    font-family: 'Cabin', sans-serif;
+    color:black; 
+    text-align: center;
+    font-size: 18px;
+}
+
+.card img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+
+.quote h4{
+    font-family: 'Unkempt', cursive;
+    color: #84A59D;
+    font-size: 40px;
+    
+    
+}
+.quote{
+    font-family: 'Cabin', sans-serif;
+    color:black; 
+    font-size: 18px; 
+    padding: 50px;
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+    background-color: #f5cac3;
+    
+}
+
+.card h5{
+    font-family: 'Cabin', sans-serif;
+    color: #f28482;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.card {
+    border: #f6bd60 solid 3px;
+    padding: 20px;
+    text-align: center;
+    height: 500px;
+}
+
+#button{
+    color: black;
+}

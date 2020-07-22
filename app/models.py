@@ -8,18 +8,24 @@ from . import login_manager
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-class User(UserMixin,db.Model):
+class User(db.Model, UserMixin):
+    '''
+    Class to define Users
+    '''
     __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String)
+    fullname = db.Column(db.String)
+    email = db.Column(db.String, unique = True)
+    bio = db.Column(db.String)
+    profile_pic_url = db.Column(db.String)
+    pass_secure = db.Column(db.String)
+    posts = db.relationship("Post", backref = 'user', lazy = 'dynamic')
 
-    id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255),index = True)
-    email = db.Column(db.String(255),unique = True,index = True)
-    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
-    bio = db.Column(db.String(255))
-    profile_pic_path = db.Column(db.String())
+    def save_user(self):
+        db.session.add(self)
+        db.session.commit()
 
-    password_hash = db.Column(db.String(255))
-    photos = db.relationship('PhotoProfile',backref = 'user',lazy = "dynamic")
     @property
     def password(self):
         raise AttributeError('You cannnot read the password attribute')

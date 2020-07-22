@@ -1,18 +1,60 @@
 {% extends 'base.html'%}
 {% import "bootstrap/wtf.html" as wtf%}
 
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Rock+Salt&family=Unkempt&display=swap"
+    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Arvo&family=Pangolin&family=Rock+Salt&family=Unkempt&display=swap"
+    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
+
 <div class="container">
-    <h1> MY BLOG </h1>
-    <h4>Quote : {{quote}} by {{author}}</h4>
+    <img src="{{url_for('static',filename='photos/yellow.jpeg')}}" alt="">
+    <h1> La VIE </h1>
+    <div class="about">
+        <h4>About this blog </h4>
+        <p>So if you wanna know
+            Here it goes
+            Gonna tell you this
+            The part of me that shows if you're close,
+            Gonna let you see everything
+            But remember that you asked for it
+            I'll try to do my best to impress
+            But it's easier to let you take a guess at the rest
+            But you wanna hear what lives in my brain
+            And my heart, will you ask for it, for your perusing?
+            At times confusing, hopefully amusing!!
+            Introducing me</p>
+    </div>
 
-    <h3>Posts</h3>
-    {% for post in posts %}
-    <li>{{post.title }}</li>
-    <!--<img src="{{url_for('static',filename=post.image_url)}}" alt="">-->
-    <button><a href="{{url_for('main.post', post_id = post.id)}}"> View Post </a></button>
+    <div class="post">
+        <h4>TAKE A LOOK AT MY POSTS</h4>
+        {% for post in posts %}
+        <div class = "col-md-4">
+        <div class= "card">
+            <img class="card-img-top" src="{{url_for('static',filename=post.image_url)}}" alt="post image">
+            <div class="card-body">
+                <h5 class="card-title">{{post.title}}</h5>
+                <button  id ="button"class ="btn btn-outline-info"><a href="{{url_for('main.post', post_id = post.id)}}"> View Post </a></button>
+            </div>
+        </div>
+    </div></div>
     {% endfor %}
+</div>
 
+
+<div class="quote">
+    <h4>Quote of the day</h4>
+    <p>{{quote}}</p>
+    <p>by: {{author}}</p>
+    <h4>Subcribe</h4>
     {{wtf.quick_form(form)}}
+
+</div>
 </div>
 {% endblock %}

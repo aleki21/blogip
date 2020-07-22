@@ -1,0 +1,40 @@
+h2{
+    font-family: 'Unkempt', cursive;
+    color: #84A59D;
+    font-size: 60px;
+}
+
+p{
+    font-family: 'Cabin', sans-serif;
+    color:black; 
+    text-align: justify;
+    font-size: 18px;
+}
+.comment{
+    font-family: 'Cabin', sans-serif;
+    color:black; 
+    text-align: justify;
+    font-size: 18px;
+}
+
+h3{
+    font-family: 'Unkempt', cursive;
+    color: #84A59D;
+    text-align: center;
+    font-size: 40px; 
+}
+.card {
+    border: solid #f6bd60 3px;
+    height: 100px;
+    width: 400px;
+    padding: 20px;
+    margin: 20px;
+    font-size: 25px;
+    font-family: 'Cabin', sans-serif;
+    background-color: #f5cac3;
+    text-align: justify; 
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 auto;
+  }
