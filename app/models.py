@@ -1,6 +1,7 @@
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 from . import login_manager
 
 @login_manager.user_loader
@@ -42,3 +43,51 @@ class Role(db.Model):
 
     def __repr__(self):
         return f'User {self.name}'
+
+# Class for posts
+class Post(db.Model):
+    '''
+    Class to define Users
+    '''
+    __tablename__ = 'posts'
+
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String)
+    image_url = db.Column(db.String)
+    content = db.Column(db.String)
+    date = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer,  db.ForeignKey('users.id'))
+    comments = db.relationship("Comment", backref='post', lazy ='dynamic')
+
+    def save_post(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_user_post(cls,id):
+        user_posts = Post.query.filter_by(user_id = id).all()
+        return user_posts
+
+    def __repr__(self):
+        return f"Post {self.title}"
+
+#class for comments
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer,primary_key = True)
+    comment_content = db.Column(db.String())
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    author_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    pitch_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
+
+    def save_comment(self):
+            db.session.add(self)
+            db.session.commit()
+
+    @classmethod
+    def get_comments(cls,id):
+            comments = Comment.query.filter_by(pitch_id=id).all()
+            return comments
+                
+    def __repr__(self):
+        return f'COMMENT {self.comment_content}'
