@@ -6,6 +6,7 @@ from .forms import addPost, addComment,updatePost,updateProfile, mailListForm
 from .. import db,photos
 from ..request import get_quotes
 from app.email import mail_message
+from sqlalchemy import desc
 
 @main.route('/',methods =['GET','POST'])
 def index():
@@ -26,7 +27,7 @@ def index():
         db.session.commit()
         return redirect(url_for('main.index'))
     
-    posts = Post.query.all()
+    posts = Post.query.order_by(desc(Post.id)).all()
     return render_template('index.html', title = title, posts = posts, quote = quote ,author = author , form = form )
 
 
