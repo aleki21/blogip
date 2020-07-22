@@ -4,6 +4,7 @@ from .forms import LoginForm
 from .. import db
 from flask_login import login_user, login_required, logout_user
 from .. import auth
+from email import mail_message
 
 @auth.route('/login',methods=['GET','POST'])
 def login():
@@ -36,3 +37,17 @@ def register():
         return redirect(url_for('auth.login'))
         title = "New Account"
     return render_template('auth/register.html',registration_form = form)html')
+
+@auth.route('/register',methods = ["GET","POST"])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(email = form.email.data, username = form.username.data,password = form.password.data)
+        db.session.add(user)
+        db.session.commit()
+
+        mail_message("Welcome to Blog","email/welcome_user",user.email,user=user)
+
+        return redirect(url_for('auth.login'))
+        title = "New Account"
+    return render_template('auth/register.html',registration_form = form)
