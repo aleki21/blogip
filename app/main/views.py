@@ -27,8 +27,8 @@ def index():
         db.session.commit()
         return redirect(url_for('main.index'))
     
-    posts = Post.query.order_by(desc(Post.id)).all()
-    return render_template('index.html', title = title, posts = posts, quote = quote ,author = author , form = form )
+
+    return render_template('index.html', title = title, quote = quote ,author = author , form = form )
 
 
 @main.route('/posts/<post_id>' ,methods = ['GET', 'POST'])

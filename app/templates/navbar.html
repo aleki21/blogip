@@ -2,7 +2,7 @@
 
 
     <ul class="nav navbar-nav">
-        <li><a class="navbar-brand" href="/"> La VIE </a></li>
+        <li><a class="navbar-brand" href="/"> Aleki Blog </a></li>
         <li><a href="/">Home</a></li>
         {% if current_user.is_authenticated %}
         <li><a href="{{url_for('main.add_post',uname = current_user.username)}}">Add Post</a></li>
