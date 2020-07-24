@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<div class="container">
+    <form class = "form-group" method = "POST" enctype="multipart/form-data"> 
+        {{form.hidden_tag()}}
+        {{form.bio.label}}
+        {{form.bio(class = "form-control", style="margin-bottom: 15px;")}}
+        <!--<input type="file" name="post_photo" class="form-control" style="margin-bottom:15px">-->
+        {{form.submit(class = "btn btn-outline-info")}}  
+
+    </form>
+
+    <form action="{{url_for('main.update_pic',uname = current_user.username)}}" method="post" enctype="multipart/form-data">
+        <label id="label"> Edit Profile Pic</label>
+        <input type="file" name="photo" class="form-control" required>
+        <input type="submit" class="btn btn-outline-info">
+    </form>
+
+</div>
+
+
+
+{% endblock%}
