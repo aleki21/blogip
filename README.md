@@ -5,7 +5,7 @@
 ## Description
 A blog application where you can create and share posts
 
-![landing](./app/static/images/landing.png)
+![landing](./app/static/photos/landing.png)
 
 
 ## How to use
